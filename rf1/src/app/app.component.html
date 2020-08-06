@@ -1,0 +1,76 @@
+<div id="center">
+
+  <div class="container-fluid">
+
+    <h2>Course Registration Form</h2>
+
+    <form [formGroup]="courseForm" (ngSubmit)="onFinal(courseForm)">
+
+      <div class="form-group">
+        <label for="firstname" >First Name: </label>
+        <input [class.is-invalid]="FirstName.invalid && FirstName.touched" type="text" name="firstname" class="form-control" formControlName="firstname">
+        <div *ngIf="FirstName.invalid && FirstName.touched">
+          <small class="text-danger" *ngIf="FirstName.errors?.required">Field cannot be empty</small>
+          <small class="text-danger" *ngIf="FirstName.errors?.minlength">Requires minimum of 5 charachters</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="lastname">Last Name: </label>
+        <input [class.is-invalid]="LastName.invalid && LastName.touched" type="text" name="lastname" class="form-control" formControlName="lastname">
+        <div *ngIf="LastName.invalid && LastName.touched">
+          <small class="text-danger" *ngIf="LastName.errors?.required">Field cannot be empty</small>
+          <small class="text-danger" *ngIf="LastName.errors?.minlength">Requires minimum of 5 charachters</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="emailid">Email ID: </label>
+        <input [class.is-invalid]="EmailID.invalid && EmailID.touched" type="text" name="email" class="form-control" formControlName="emailid">
+        <div *ngIf="EmailID.invalid && EmailID.touched">
+          <small class="text-danger" *ngIf="EmailID.errors?.required">Field cannot be empty</small>
+          <small class="text-danger" *ngIf="EmailID.errors?.email">Enter Valid EmailID</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="mobileno">Mobile Number: </label>
+        <input [class.is-invalid]="MobileNo.invalid && MobileNo.touched" type="number" class="form-control" formControlName="mobileno">
+        <div *ngIf="MobileNo.invalid && MobileNo.touched">
+          <small class="text-danger" *ngIf="MobileNo.errors?.required">Field cannot be empty</small>
+          <small class="text-danger" *ngIf="MobileNo.errors?.pattern">Enter Valid EmailID</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="gender"> Gender: </label><br> &nbsp;&nbsp;
+        <input [class.is-invalid]="Gender.invalid && Gender.touched" type="radio" value="male"  name="gender" class="form-check-input" formControlName="gender"> &nbsp;
+        <label class="form-check-label" for="inlineCheckbox2"> Male</label>&nbsp;&nbsp;
+        <input [class.is-invalid]="Gender.invalid && Gender.touched" type="radio" value="female"  name="gender" class="form-check-input" formControlName="gender"> &nbsp;
+        <label class="form-check-label" for="inlineCheckbox2"> Female</label>
+        <div *ngIf="Gender.invalid && Gender.touched">
+          <small class="text-danger" *ngIf="Gender.errors?.required">Field cannot be empty</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="course"> Course: </label><br>
+        <select  [class.is-invalid]="Course.invalid && Course.touched" id="course" name="course" class="form-control" formControlName="course">
+          <option [ngValue]="c.id" *ngFor="let c of courseList">
+            {{c.name}}
+          </option>
+        </select>
+        <div *ngIf="Gender.invalid && Gender.touched">
+          <small class="text-danger" *ngIf="Gender.errors?.required">Field cannot be empty</small>
+        </div>
+      </div>
+
+      <div class="form-group col-sm-10">
+        <button type="submit" class="btn btn-primary">Register</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

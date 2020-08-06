@@ -1,0 +1,12 @@
+#center {
+    position: absolute;
+    width: 500px;
+    height: 550px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /*margin: 80px 10px 50px 500px;*/
+    margin: 30% 35% 10% 35%;
+    background-color: #5FA3E5;
+  }
